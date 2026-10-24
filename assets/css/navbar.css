@@ -1,0 +1,607 @@
+/* ==========================================================================
+   Navbar – brand look (logo gold + black, navy accents, Montserrat),
+   3D effects, animations. Shared by all pages.
+   Brand colour variables (--cps-*) are defined in theme.css, which every
+   page loads before this file.
+   ========================================================================== */
+
+#siteTopbar,
+#siteHeader {
+  font-family: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+}
+
+#siteTopbar a:focus-visible,
+#siteHeader a:focus-visible,
+#siteHeader button:focus-visible {
+  outline: 2px solid var(--cps-gold);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Top info bar (black + gold, like the logo)
+   -------------------------------------------------------------------------- */
+#siteTopbar {
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(90deg, var(--cps-black), var(--cps-charcoal) 50%, var(--cps-black));
+  border-bottom: 1px solid rgba(171, 131, 79, 0.5);
+}
+
+#siteTopbar svg {
+  color: var(--cps-gold-light);
+}
+
+#siteTopbar a {
+  transition: color 0.2s ease;
+}
+
+#siteTopbar .topbar-cta {
+  font-weight: 600;
+  color: var(--cps-gold-light);
+}
+
+#siteTopbar .topbar-cta svg {
+  color: currentColor;
+}
+
+#siteTopbar a:hover {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Header: white bar, floating shadow, thin gold line at the bottom
+   -------------------------------------------------------------------------- */
+#siteHeader {
+  color: var(--cps-ink);
+  box-shadow: 0 10px 24px -14px rgba(15, 23, 42, 0.28);
+  transition: box-shadow 0.3s ease;
+}
+
+#siteHeader.is-scrolled {
+  box-shadow: 0 18px 34px -16px rgba(15, 23, 42, 0.45);
+}
+
+#siteHeader::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cps-gold) 20%, var(--cps-gold-light) 50%, var(--cps-gold) 80%, transparent);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Logo: flips in on page load, tilts in 3D on hover
+   -------------------------------------------------------------------------- */
+#siteHeader .nav-logo img {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: navLogoIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+#siteHeader .nav-logo:hover img {
+  transform: perspective(700px) rotateY(-14deg) rotateX(6deg) scale(1.03);
+}
+
+/* --------------------------------------------------------------------------
+   Desktop links: uppercase, drop in one by one, 3D text roll + gold underline
+   -------------------------------------------------------------------------- */
+#siteHeader .nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--cps-ink);
+  animation: navDrop 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation-delay: calc(0.15s + var(--i, 0) * 0.07s);
+}
+
+#siteHeader .nav-link.is-active {
+  color: var(--cps-gold-dark);
+}
+
+#siteHeader .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0.1em; /* skip the trailing letter-spacing so the line ends with the word */
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--cps-gold-light), var(--cps-gold), var(--cps-gold-dark));
+  box-shadow: 0 2px 6px rgba(171, 131, 79, 0.45);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+#siteHeader .nav-link:hover::after,
+#siteHeader .nav-link:focus-visible::after,
+#siteHeader .nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* The roll: front face (dark text) turns away, back face (gold text) turns in */
+#siteHeader .nav-roll {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  perspective: 400px;
+}
+
+#siteHeader .nav-cube {
+  position: relative;
+  display: block;
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+#siteHeader .nav-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: var(--cps-gold-dark);
+  transform-origin: 50% 0;
+  transform: translate3d(0, 100%, 0) rotateX(-90deg);
+}
+
+#siteHeader .nav-link:hover .nav-cube,
+#siteHeader .nav-link:focus-visible .nav-cube {
+  transform: translate3d(0, 0, -1.4em) rotateX(90deg);
+}
+
+/* --------------------------------------------------------------------------
+   Right side: actions slide in, 3D call orb with pulse ring
+   -------------------------------------------------------------------------- */
+#siteHeader .nav-actions {
+  animation: navSlideLeft 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s backwards;
+}
+
+#siteHeader .call-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cps-gold-dark);
+}
+
+#siteHeader .call-number {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cps-navy);
+  transition: color 0.3s ease;
+}
+
+#siteHeader .call-link:hover .call-number {
+  color: var(--cps-gold-dark);
+}
+
+#siteHeader .call-orb,
+#siteHeader .call-orb-solid {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+
+#siteHeader .call-orb::after,
+#siteHeader .call-orb-solid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(171, 131, 79, 0.55);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: navRing 2.4s ease-out infinite;
+}
+
+/* Desktop: cream orb that turns gold on hover */
+#siteHeader .call-orb {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--cps-gold-dark);
+  background: linear-gradient(145deg, #ffffff, #f3e9d8);
+  box-shadow: 0 6px 14px -4px rgba(140, 106, 59, 0.4), inset 0 -3px 6px rgba(171, 131, 79, 0.15),
+    inset 0 2px 3px #ffffff;
+  transition: color 0.3s ease, translate 0.3s ease, box-shadow 0.3s ease;
+}
+
+#siteHeader .call-orb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(145deg, var(--cps-gold-light), var(--cps-gold-dark));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#siteHeader .call-link:hover .call-orb {
+  color: #ffffff;
+  translate: 0 -2px;
+  box-shadow: 0 10px 18px -6px rgba(140, 106, 59, 0.6), inset 0 -3px 6px rgba(0, 0, 0, 0.15),
+    inset 0 2px 3px rgba(255, 255, 255, 0.35);
+}
+
+#siteHeader .call-link:hover .call-orb::before {
+  opacity: 1;
+}
+
+#siteHeader .call-link:hover .call-orb svg {
+  animation: navPhoneWiggle 0.6s ease-in-out;
+}
+
+/* Mobile: solid gold orb */
+#siteHeader .call-orb-solid {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #ffffff;
+  background: radial-gradient(circle at 30% 25%, #d9b981, var(--cps-gold) 55%, var(--cps-gold-dark));
+  box-shadow: 0 3px 0 var(--cps-gold-deep), 0 8px 14px -4px rgba(140, 106, 59, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  transition: translate 0.15s ease, box-shadow 0.15s ease;
+}
+
+#siteHeader .call-orb-solid:active {
+  translate: 0 2px;
+  box-shadow: 0 1px 0 var(--cps-gold-deep), 0 4px 8px -4px rgba(140, 106, 59, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   Call dropdown: the phone icon opens a list of both numbers below it.
+   Its look (card, numbers) is shared with the footer pop-up: see "Call menu"
+   in theme.css. Toggled by assets/js/theme.js.
+   -------------------------------------------------------------------------- */
+#siteHeader .call-menu {
+  position: relative;
+}
+
+/* Keep the desktop icon gold while its list is open */
+#siteHeader .call-menu.is-open .call-orb {
+  color: #ffffff;
+}
+
+#siteHeader .call-menu.is-open .call-orb::before {
+  opacity: 1;
+}
+
+/* Opens below the icon, lined up with its right edge */
+#siteHeader .call-dropdown {
+  top: calc(100% + 14px);
+  right: 0;
+  z-index: 60;
+  box-shadow: 0 24px 48px -18px rgba(15, 23, 42, 0.35), 0 2px 6px rgba(15, 23, 42, 0.06);
+  transform: perspective(700px) rotateX(-14deg) translateY(-6px);
+  transform-origin: top right;
+}
+
+#siteHeader .call-menu.is-open .call-dropdown {
+  transform: none;
+}
+
+/* Small pointer under the phone icon */
+#siteHeader .call-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  right: var(--caret-right, 16px);
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid #ece4d6;
+  border-left: 1px solid #ece4d6;
+  border-top-left-radius: 3px;
+  background: #ffffff;
+  transform: rotate(45deg);
+}
+
+/* Mobile: line the list up with the right edge of the bar (past the menu button) */
+#siteHeader .call-menu.is-mobile .call-dropdown {
+  right: -52px;
+  --caret-right: 66px;
+}
+
+/* --------------------------------------------------------------------------
+   3D buttons: raised edge, lift on hover, press on click, light sweep
+   -------------------------------------------------------------------------- */
+#siteHeader .btn-3d,
+#siteHeader .btn-3d-light {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.35rem;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: translate 0.18s ease, box-shadow 0.18s ease, color 0.2s ease;
+}
+
+#siteHeader .btn-3d {
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+  background: linear-gradient(180deg, #b48d58 0%, var(--cps-gold-dark) 60%, #7d5e33 100%);
+  box-shadow: 0 4px 0 var(--cps-gold-deep), 0 10px 18px -6px rgba(140, 106, 59, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+#siteHeader .btn-3d::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -75%;
+  width: 50%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+#siteHeader .btn-3d:hover {
+  translate: 0 -2px;
+  box-shadow: 0 6px 0 var(--cps-gold-deep), 0 16px 24px -8px rgba(140, 106, 59, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+#siteHeader .btn-3d:hover::before {
+  left: 125%;
+}
+
+#siteHeader .btn-3d:active {
+  translate: 0 3px;
+  box-shadow: 0 1px 0 var(--cps-gold-deep), 0 4px 8px -4px rgba(140, 106, 59, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#siteHeader .btn-3d svg {
+  transition: transform 0.25s ease;
+}
+
+#siteHeader .btn-3d:hover .icon-arrow {
+  transform: translateX(3px);
+}
+
+#siteHeader .btn-3d-light {
+  color: var(--cps-navy);
+  background: linear-gradient(180deg, #ffffff, #f4f1ea);
+  border: 1px solid #e7e0d2;
+  box-shadow: 0 3px 0 #d9cfbd, 0 8px 14px -8px rgba(15, 23, 42, 0.35);
+}
+
+#siteHeader .btn-3d-light:hover {
+  color: var(--cps-gold-dark);
+  translate: 0 -2px;
+  box-shadow: 0 5px 0 #d9cfbd, 0 12px 18px -8px rgba(15, 23, 42, 0.4);
+}
+
+#siteHeader .btn-3d-light:active {
+  translate: 0 2px;
+  box-shadow: 0 1px 0 #d9cfbd, 0 4px 8px -6px rgba(15, 23, 42, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile menu button + panel
+   -------------------------------------------------------------------------- */
+#siteHeader .menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #e7e0d2;
+  border-radius: 0.5rem;
+  color: var(--cps-navy);
+  background: linear-gradient(180deg, #ffffff, #f4f1ea);
+  box-shadow: 0 3px 0 #d9cfbd, 0 6px 12px -6px rgba(15, 23, 42, 0.35);
+  transition: translate 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Page scripts add .rotate-90 when the menu opens; spin the icon instead of the whole 3D button */
+#siteHeader .menu-btn.rotate-90 {
+  transform: none;
+}
+
+#siteHeader .menu-btn:active {
+  translate: 0 2px;
+  box-shadow: 0 1px 0 #d9cfbd, 0 3px 6px -4px rgba(15, 23, 42, 0.3);
+}
+
+#siteHeader .menu-btn svg:not(.hidden) {
+  animation: navIconIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#siteHeader #mobileMenu {
+  box-shadow: 0 28px 40px -24px rgba(15, 23, 42, 0.4);
+}
+
+/* Panel unfolds from the top edge each time it opens */
+#siteHeader #mobileMenu:not(.hidden) {
+  transform-origin: top center;
+  animation: navFold 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+#siteHeader .mm-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  padding: 0.8rem 0.75rem;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cps-ink);
+  transition: background-color 0.2s ease, color 0.2s ease, translate 0.2s ease;
+}
+
+#siteHeader #mobileMenu:not(.hidden) .mm-item {
+  animation: navSlideIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation-delay: calc(0.12s + var(--i, 0) * 0.05s);
+}
+
+#siteHeader .mm-item:hover {
+  color: var(--cps-gold-dark);
+  background-color: var(--cps-cream);
+  translate: 4px 0;
+}
+
+#siteHeader .mm-item.is-active {
+  color: var(--cps-gold-dark);
+  background-color: var(--cps-cream);
+  box-shadow: inset 3px 0 0 var(--cps-gold);
+}
+
+#siteHeader .mm-contact svg {
+  color: var(--cps-gold);
+}
+
+#siteHeader .mm-contact a {
+  transition: color 0.2s ease;
+}
+
+#siteHeader .mm-contact a:hover {
+  color: var(--cps-gold-dark);
+}
+
+/* --------------------------------------------------------------------------
+   Keyframes
+   -------------------------------------------------------------------------- */
+@keyframes navLogoIn {
+  from {
+    opacity: 0;
+    transform: perspective(700px) rotateY(-75deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(700px) rotateY(0);
+  }
+}
+
+@keyframes navDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes navSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes navSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes navFold {
+  from {
+    opacity: 0;
+    transform: perspective(900px) rotateX(-70deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(900px) rotateX(0);
+  }
+}
+
+@keyframes navRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  80%,
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes navPhoneWiggle {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20% {
+    transform: rotate(-15deg);
+  }
+
+  40% {
+    transform: rotate(12deg);
+  }
+
+  60% {
+    transform: rotate(-8deg);
+  }
+
+  80% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes navIconIn {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.6);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* Respect the "reduce motion" OS setting */
+@media (prefers-reduced-motion: reduce) {
+  #siteHeader,
+  #siteHeader *,
+  #siteHeader *::before,
+  #siteHeader *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,7 @@
+# Build tool downloads (the CSS build runs through npx, so this normally never appears)
+node_modules/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini

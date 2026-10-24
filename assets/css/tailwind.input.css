@@ -1,0 +1,5 @@
+/* Source for assets/css/tailwind.css (the file the pages load).
+   Rebuild after adding new Tailwind classes to any page:  npm run build:css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

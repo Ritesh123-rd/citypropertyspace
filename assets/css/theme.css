@@ -1,0 +1,1003 @@
+/* ==========================================================================
+   City Property Space – site theme (shared by all pages, matches the navbar)
+   Brand: logo gold + black, navy accents · Montserrat headings, Inter text
+   ========================================================================== */
+
+:root {
+  --cps-gold: #ab834f;       /* logo gold – lines, icons, accents */
+  --cps-gold-light: #c9a66b;
+  --cps-gold-dark: #8c6a3b;  /* gold for text on white (readable contrast) */
+  --cps-gold-deep: #5e4626;  /* 3D button edge */
+  --cps-black: #0d0d0f;      /* logo wordmark black */
+  --cps-charcoal: #1f1f23;
+  --cps-navy: #273a7c;       /* logo window navy – small accents */
+  --cps-ink: #111827;        /* text black */
+  --cps-cream: #faf6ef;
+  --cps-font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --cps-font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+body {
+  font-family: var(--cps-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--cps-font-display);
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: rgba(171, 131, 79, 0.25);
+}
+
+/* Small gold label above a heading, with gold lines either side */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--cps-font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cps-gold-dark);
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--cps-gold-light), var(--cps-gold));
+}
+
+/* Left-aligned version: line before the text only */
+.eyebrow.is-left::after {
+  display: none;
+}
+
+/* Light version for dark photo backgrounds */
+.eyebrow.is-light {
+  color: #e6d3b3;
+}
+
+.eyebrow.is-light::before,
+.eyebrow.is-light::after {
+  background: linear-gradient(90deg, #e6d3b3, var(--cps-gold-light));
+}
+
+.text-gold-gradient {
+  background: linear-gradient(90deg, var(--cps-gold-light), var(--cps-gold), var(--cps-gold-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Short gold bar under the title on image banners */
+.banner-title {
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.banner-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 64px;
+  height: 3px;
+  border-radius: 3px;
+  translate: -50% 0;
+  background: linear-gradient(90deg, var(--cps-gold-light), var(--cps-gold));
+}
+
+/* --------------------------------------------------------------------------
+   3D buttons (same look as the navbar buttons)
+   -------------------------------------------------------------------------- */
+.btn-gold,
+.btn-light,
+.btn-outline-gold,
+.btn-outline-light {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  font-family: var(--cps-font-display);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: translate 0.18s ease, box-shadow 0.18s ease, color 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn-gold svg,
+.btn-light svg,
+.btn-outline-gold svg,
+.btn-outline-light svg {
+  transition: transform 0.25s ease;
+}
+
+.btn-gold:hover svg,
+.btn-light:hover svg,
+.btn-outline-gold:hover svg,
+.btn-outline-light:hover svg {
+  transform: translateX(3px);
+}
+
+.btn-gold:active,
+.btn-light:active,
+.btn-outline-gold:active,
+.btn-outline-light:active {
+  translate: 0 2px;
+}
+
+/* Gold: raised edge, lift on hover, light sweep */
+.btn-gold {
+  overflow: hidden;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+  background: linear-gradient(180deg, #b48d58 0%, var(--cps-gold-dark) 60%, #7d5e33 100%);
+  box-shadow: 0 4px 0 var(--cps-gold-deep), 0 10px 18px -6px rgba(140, 106, 59, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -75%;
+  width: 50%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.btn-gold:hover {
+  translate: 0 -2px;
+  box-shadow: 0 6px 0 var(--cps-gold-deep), 0 16px 24px -8px rgba(140, 106, 59, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-gold:hover::before {
+  left: 125%;
+}
+
+.btn-gold:active {
+  box-shadow: 0 1px 0 var(--cps-gold-deep), 0 4px 8px -4px rgba(140, 106, 59, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Light: white 3D button with navy text */
+.btn-light {
+  color: var(--cps-navy);
+  background: linear-gradient(180deg, #ffffff, #f4f1ea);
+  border: 1px solid #e7e0d2;
+  box-shadow: 0 3px 0 #d9cfbd, 0 8px 14px -8px rgba(15, 23, 42, 0.35);
+}
+
+.btn-light:hover {
+  color: var(--cps-gold-dark);
+  translate: 0 -2px;
+  box-shadow: 0 5px 0 #d9cfbd, 0 12px 18px -8px rgba(15, 23, 42, 0.4);
+}
+
+.btn-light:active {
+  box-shadow: 0 1px 0 #d9cfbd, 0 4px 8px -6px rgba(15, 23, 42, 0.3);
+}
+
+/* Gold outline: fills with gold on hover */
+.btn-outline-gold {
+  color: var(--cps-gold-dark);
+  background-color: transparent;
+  border: 1.5px solid var(--cps-gold);
+  box-shadow: 0 3px 0 #e6d3b3;
+}
+
+.btn-outline-gold:hover {
+  color: #ffffff;
+  background-color: var(--cps-gold-dark);
+  border-color: var(--cps-gold-dark);
+  translate: 0 -2px;
+  box-shadow: 0 5px 0 var(--cps-gold-deep), 0 12px 20px -8px rgba(140, 106, 59, 0.5);
+}
+
+/* White outline: for gold or dark backgrounds */
+.btn-outline-light {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-outline-light:hover {
+  color: var(--cps-gold-dark);
+  background-color: #ffffff;
+  border-color: #ffffff;
+  translate: 0 -2px;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25), 0 12px 20px -8px rgba(0, 0, 0, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Cards, icons, tiles
+   -------------------------------------------------------------------------- */
+/* Card that lifts in 3D on hover */
+.card-3d {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 20px -14px rgba(15, 23, 42, 0.25);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card-3d:hover {
+  transform: translateY(-6px);
+  border-color: rgba(171, 131, 79, 0.45);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04), 0 24px 40px -20px rgba(15, 23, 42, 0.38);
+}
+
+/* Square gold icon chip; fills with gold when its card is hovered */
+.icon-chip {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  color: var(--cps-gold-dark);
+  background: linear-gradient(145deg, #ffffff, #f3e9d8);
+  box-shadow: 0 6px 14px -6px rgba(140, 106, 59, 0.45), inset 0 -2px 4px rgba(171, 131, 79, 0.15),
+    inset 0 1px 2px #ffffff;
+  transition: color 0.3s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.icon-chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(145deg, var(--cps-gold-light), var(--cps-gold-dark));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-3d:hover .icon-chip {
+  color: #ffffff;
+  transform: perspective(300px) rotateX(8deg) rotateY(-12deg) scale(1.06);
+}
+
+.card-3d:hover .icon-chip::before {
+  opacity: 1;
+}
+
+/* Round solid gold 3D icon */
+.icon-orb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: radial-gradient(circle at 30% 25%, #d9b981, var(--cps-gold) 55%, var(--cps-gold-dark));
+  box-shadow: 0 3px 0 var(--cps-gold-deep), 0 10px 18px -6px rgba(140, 106, 59, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+}
+
+/* Partner logo tiles */
+.logo-tile {
+  box-shadow: 0 6px 16px -10px rgba(15, 23, 42, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.logo-tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(171, 131, 79, 0.5);
+  box-shadow: 0 16px 28px -14px rgba(140, 106, 59, 0.45);
+}
+
+/* Round gold 3D arrow buttons (carousels) */
+.carousel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  color: #ffffff;
+  opacity: 0.92;
+  background: radial-gradient(circle at 30% 25%, #d9b981, var(--cps-gold) 55%, var(--cps-gold-dark));
+  box-shadow: 0 3px 0 var(--cps-gold-deep), 0 10px 18px -6px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  transition: translate 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
+}
+
+.carousel-btn:hover {
+  opacity: 1;
+  translate: 0 -2px;
+}
+
+.carousel-btn:active {
+  translate: 0 2px;
+  box-shadow: 0 1px 0 var(--cps-gold-deep), 0 4px 8px -4px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark panel (black like the logo text) with a gold line on top */
+.panel-dark {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background: linear-gradient(160deg, var(--cps-charcoal) 0%, #111113 100%);
+  border: 1px solid rgba(171, 131, 79, 0.22);
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.55);
+}
+
+.panel-dark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cps-gold-dark), var(--cps-gold-light), var(--cps-gold-dark));
+}
+
+/* Gold panel (contact details): deep bronze-gold with white text and corner rings */
+.panel-gold {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: #ffffff;
+  background: radial-gradient(ellipse at 100% 0%, rgba(255, 255, 255, 0.16), transparent 55%),
+    linear-gradient(155deg, #3f2f1a 0%, var(--cps-gold-deep) 45%, #7d5e33 100%);
+  border: 1px solid rgba(201, 166, 107, 0.45);
+  box-shadow: 0 24px 48px -24px rgba(63, 47, 26, 0.65);
+}
+
+.panel-gold::before,
+.panel-gold::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+.panel-gold::before {
+  right: -110px;
+  bottom: -110px;
+  width: 260px;
+  height: 260px;
+}
+
+.panel-gold::after {
+  right: -70px;
+  bottom: -70px;
+  width: 180px;
+  height: 180px;
+}
+
+/* White 3D icon circle with a gold icon (lifts when it is a link) */
+.contact-orb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  color: var(--cps-gold-dark);
+  background: linear-gradient(145deg, #ffffff, #f3e9d8);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18), 0 10px 18px -8px rgba(0, 0, 0, 0.45), inset 0 1px 1px #ffffff;
+  transition: translate 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-orb svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+a.contact-orb:hover {
+  translate: 0 -2px;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.18), 0 14px 22px -8px rgba(0, 0, 0, 0.5), inset 0 1px 1px #ffffff;
+}
+
+/* Deep gold call-to-action band */
+.cta-gold {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background: radial-gradient(ellipse at 15% 0%, rgba(255, 255, 255, 0.12), transparent 55%),
+    linear-gradient(135deg, var(--cps-gold-deep) 0%, var(--cps-gold-dark) 55%, #9e7a48 100%);
+}
+
+.cta-gold .eyebrow {
+  color: #ffffff;
+}
+
+.cta-gold .eyebrow::before,
+.cta-gold .eyebrow::after {
+  background: #f3e9d8;
+}
+
+/* FAQ accordion: gold accent on the open item */
+.faq-item {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item.active {
+  border-color: rgba(171, 131, 79, 0.55);
+  box-shadow: 0 14px 30px -18px rgba(140, 106, 59, 0.45);
+}
+
+.faq-item.active .faq-toggle {
+  color: var(--cps-gold-dark);
+}
+
+/* A closed answer keeps no padding or divider, so no empty strip shows under the question */
+.faq-item:not(.active) .faq-content {
+  padding-bottom: 0;
+  border-top-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Home: "Why Choose Us" cards (numbered; icon beside the text on phones)
+   -------------------------------------------------------------------------- */
+.why-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 1px solid #ece4d6;
+  border-radius: 1rem;
+  background: #ffffff;
+  padding: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .why-card {
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: 1.5rem;
+  }
+}
+
+.why-card .icon-chip {
+  flex-shrink: 0;
+}
+
+/* Large outlined number in the corner; fills lightly on hover */
+.why-num {
+  position: absolute;
+  top: 0.85rem;
+  right: 1.1rem;
+  font-family: var(--cps-font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(171, 131, 79, 0.4);
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.why-card:hover .why-num {
+  color: rgba(171, 131, 79, 0.16);
+}
+
+.why-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--cps-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Home: partner logos in a continuous strip (pauses on hover)
+   -------------------------------------------------------------------------- */
+.partner-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.partner-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  padding: 0.75rem 0 1.5rem;
+  animation: cpsMarquee 50s linear infinite;
+  will-change: transform;
+}
+
+.partner-marquee:hover .partner-track {
+  animation-play-state: paused;
+}
+
+.partner-logo {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 8.5rem;
+  height: 5.75rem;
+  padding: 0.85rem;
+  border: 1px solid #ece4d6;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 8px 18px -12px rgba(15, 23, 42, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.partner-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.partner-logo:hover {
+  transform: translateY(-4px);
+  border-color: rgba(171, 131, 79, 0.5);
+  box-shadow: 0 16px 28px -14px rgba(140, 106, 59, 0.45);
+}
+
+@media (min-width: 768px) {
+  .partner-logo {
+    width: 10.5rem;
+    height: 7rem;
+    padding: 1rem;
+  }
+}
+
+/* The track holds the logos twice; moving by one set (+ half a gap) loops seamlessly */
+@keyframes cpsMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 0.625rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .partner-track {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Forms (contact page): compact fields with an icon, gold focus glow
+   -------------------------------------------------------------------------- */
+.form-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--cps-font-display);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.form-label span {
+  color: var(--cps-gold-dark);
+}
+
+.form-field {
+  position: relative;
+}
+
+/* Icon inside the field, turns gold while the field is in use */
+.form-field > svg {
+  position: absolute;
+  top: 50%;
+  left: 0.85rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  translate: 0 -50%;
+  color: #94a3b8;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.form-field:focus-within > svg {
+  color: var(--cps-gold-dark);
+}
+
+.form-input {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.6rem;
+  background-color: #f8fafc;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.925rem;
+  line-height: 1.5;
+  color: var(--cps-ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.form-field > .form-input {
+  padding-left: 2.6rem;
+}
+
+.form-input::placeholder {
+  color: #94a3b8;
+}
+
+.form-input:hover {
+  border-color: #cbd5e1;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--cps-gold);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(171, 131, 79, 0.18);
+}
+
+/* Dropdowns: gold arrow; grey text until something is chosen */
+.form-select {
+  appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238c6a3b' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 1rem;
+}
+
+.form-select:invalid,
+.form-select:has(option[value=""]:checked) {
+  color: #94a3b8;
+}
+
+.form-select option {
+  color: var(--cps-ink);
+}
+
+.form-textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+/* --------------------------------------------------------------------------
+   Call menu pop-up (navbar dropdown + footer pop-up): a white card listing both
+   phone numbers as tel: links, so tapping one dials it on a phone.
+   Opened/closed by assets/js/theme.js; each place sets its own position
+   (navbar.css for the navbar, the footer section below for the footer).
+   -------------------------------------------------------------------------- */
+.call-dropdown {
+  position: absolute;
+  width: 270px;
+  padding: 0.75rem;
+  border: 1px solid #ece4d6;
+  border-radius: 0.9rem;
+  background: #ffffff;
+  font-family: var(--cps-font-display);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.3s;
+}
+
+.call-menu.is-open .call-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
+}
+
+.call-dropdown-title {
+  padding: 0.25rem 0.5rem 0.5rem;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cps-gold-dark);
+}
+
+.call-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem;
+  border-radius: 0.65rem;
+  transition: background-color 0.2s ease, translate 0.2s ease;
+}
+
+.call-option:hover,
+.call-option:focus-visible {
+  background-color: var(--cps-cream);
+  translate: 3px 0;
+}
+
+.call-option-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: radial-gradient(circle at 30% 25%, #d9b981, var(--cps-gold) 55%, var(--cps-gold-dark));
+  box-shadow: 0 2px 0 var(--cps-gold-deep), 0 6px 12px -4px rgba(140, 106, 59, 0.5);
+}
+
+.call-option-number {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--cps-navy);
+}
+
+.call-option-hint {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.call-option:hover .call-option-number {
+  color: var(--cps-gold-dark);
+}
+
+/* --------------------------------------------------------------------------
+   Footer (black + gold, like the logo)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.68);
+  background: radial-gradient(ellipse 55% 45% at 0% 0%, rgba(171, 131, 79, 0.16), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 100% 100%, rgba(171, 131, 79, 0.1), transparent 70%),
+    linear-gradient(180deg, #141416 0%, var(--cps-black) 100%);
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--cps-gold) 20%, var(--cps-gold-light) 50%, var(--cps-gold) 80%,
+      transparent);
+}
+
+.footer-title {
+  position: relative;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.footer-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--cps-gold-light), var(--cps-gold));
+}
+
+.site-footer a {
+  transition: color 0.2s ease, translate 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--cps-gold-light);
+}
+
+/* Link lists with a gold arrow; the link slides right on hover */
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-links svg {
+  flex-shrink: 0;
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--cps-gold);
+}
+
+.footer-links a:hover {
+  translate: 4px 0;
+}
+
+/* Round 3D contact buttons (WhatsApp, call, email) */
+.site-footer .footer-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 9999px;
+  color: var(--cps-gold-light);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(171, 131, 79, 0.45);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, translate 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.site-footer .footer-social:hover {
+  color: #ffffff;
+  background-color: var(--cps-gold-dark);
+  border-color: var(--cps-gold);
+  translate: 0 -3px;
+  box-shadow: 0 5px 0 var(--cps-gold-deep), 0 12px 20px -8px rgba(0, 0, 0, 0.6);
+}
+
+/* Footer call button: a small pop-up with both numbers opens above it */
+.site-footer .call-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.site-footer .call-menu.is-open .footer-social {
+  color: #ffffff;
+  background-color: var(--cps-gold-dark);
+  border-color: var(--cps-gold);
+}
+
+.site-footer .call-dropdown {
+  bottom: calc(100% + 14px);
+  left: -0.5rem;
+  z-index: 30;
+  box-shadow: 0 -6px 40px -10px rgba(0, 0, 0, 0.65);
+  transform: perspective(700px) rotateX(14deg) translateY(6px);
+  transform-origin: bottom left;
+}
+
+.site-footer .call-menu.is-open .call-dropdown {
+  transform: none;
+}
+
+/* Pointer under the pop-up, aimed at the phone button */
+.site-footer .call-dropdown::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 22px;
+  width: 12px;
+  height: 12px;
+  border-right: 1px solid #ece4d6;
+  border-bottom: 1px solid #ece4d6;
+  border-bottom-right-radius: 3px;
+  background: #ffffff;
+  transform: rotate(45deg);
+}
+
+/* Keep the pop-up rows' own hover animation (footer links use a different one) */
+.site-footer .call-option {
+  transition: background-color 0.2s ease, translate 0.2s ease;
+}
+
+/* "Get in Touch" lines: label (Phone:, Email:, Address:) followed by the value */
+.footer-label {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(171, 131, 79, 0.22);
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Developer credit in the bottom bar */
+.footer-credit {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--cps-gold-light);
+  text-underline-offset: 3px;
+}
+
+.footer-credit:hover {
+  text-decoration: underline;
+}
+
+/* Gold 3D "back to top" button */
+.footer-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: radial-gradient(circle at 30% 25%, #d9b981, var(--cps-gold) 55%, var(--cps-gold-dark));
+  box-shadow: 0 3px 0 var(--cps-gold-deep), 0 10px 18px -6px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  transition: translate 0.15s ease, box-shadow 0.15s ease;
+}
+
+.site-footer .footer-top:hover {
+  color: #ffffff;
+  translate: 0 -3px;
+}
+
+.site-footer .footer-top:active {
+  translate: 0 2px;
+  box-shadow: 0 1px 0 var(--cps-gold-deep), 0 4px 8px -4px rgba(0, 0, 0, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll animation: .reveal-up fades in and rises when it comes into view
+   (assets/js/theme.js adds .is-visible; --d sets a stagger delay)
+   -------------------------------------------------------------------------- */
+.cps-js .reveal-up {
+  opacity: 0;
+}
+
+.cps-js .reveal-up.is-visible {
+  animation: cpsRevealUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s) both;
+}
+
+@keyframes cpsRevealUp {
+  from {
+    opacity: 0;
+    translate: 0 26px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media print {
+  .cps-js .reveal-up {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Respect the "reduce motion" OS setting */
+@media (prefers-reduced-motion: reduce) {
+  .cps-js .reveal-up,
+  .cps-js .reveal-up.is-visible {
+    opacity: 1;
+    animation: none;
+  }
+
+  .card-3d,
+  .card-3d:hover,
+  .card-3d:hover .icon-chip,
+  .logo-tile:hover {
+    transform: none;
+  }
+}

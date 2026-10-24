@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog | City Property Space</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/theme.css" />
+  <link rel="stylesheet" href="./assets/css/navbar.css" />
+  <script src="./assets/js/theme.js"></script>
+  <link rel="stylesheet" href="./assets/css/tailwind.css" />
+</head>
+
+<body class="bg-white text-slate-800">
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+          mobileMenuBtn.classList.toggle('rotate-90');
+        });
+      }
+    });
+  </script>
+
+
+
+  <!-- Navbar (brand colours, font, 3D effects and animations: assets/css/navbar.css) -->
+  <header id="siteHeader" style="height: 91px;" class="sticky top-0 z-50 bg-white">
+    <div class="container mx-auto px-4 flex h-full items-center justify-between gap-6">
+      <!-- Logo -->
+      <a href="index.html" class="nav-logo flex h-full shrink-0 items-center">
+        <img src="./assets/img/logo/logo.jpeg" alt="City Property Space" class="h-20 w-auto" />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-8">
+        <a href="index.html" class="nav-link" style="--i: 0">
+          <span class="nav-roll"><span class="nav-cube">Home<span class="nav-back"
+                aria-hidden="true">Home</span></span></span>
+        </a>
+        <a href="about.html" class="nav-link" style="--i: 1">
+          <span class="nav-roll"><span class="nav-cube">About<span class="nav-back"
+                aria-hidden="true">About</span></span></span>
+        </a>
+        <a href="properties.html" class="nav-link" style="--i: 2">
+          <span class="nav-roll"><span class="nav-cube">Properties<span class="nav-back"
+                aria-hidden="true">Properties</span></span></span>
+        </a>
+        <a href="blog.html" aria-current="page" class="nav-link is-active" style="--i: 3">
+          <span class="nav-roll"><span class="nav-cube">Blog<span class="nav-back"
+                aria-hidden="true">Blog</span></span></span>
+        </a>
+        <a href="contact.html" class="nav-link" style="--i: 4">
+          <span class="nav-roll"><span class="nav-cube">Contact<span class="nav-back"
+                aria-hidden="true">Contact</span></span></span>
+        </a>
+      </nav>
+
+      <!-- Desktop actions -->
+      <div class="nav-actions hidden lg:flex items-center gap-5">
+        <div class="call-menu hidden lg:flex">
+          <button type="button" class="call-link call-menu-toggle flex items-center" aria-label="Call us"
+            aria-expanded="false" aria-controls="callMenuDesktop">
+            <span class="call-orb">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+              </svg>
+            </span>
+          </button>
+          <div id="callMenuDesktop" class="call-dropdown">
+            <p class="call-dropdown-title">Call Us</p>
+            <a href="tel:+919579504564" class="call-option">
+              <span class="call-option-icon"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg></span>
+              <span>
+                <span class="call-option-number">+91 9579504564</span>
+                <span class="call-option-hint">Call now</span>
+              </span>
+            </a>
+            <a href="tel:+919156284621" class="call-option">
+              <span class="call-option-icon"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg></span>
+              <span>
+                <span class="call-option-number">+91 9156284621</span>
+                <span class="call-option-hint">Call now</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <span class="hidden lg:block h-10 w-px bg-slate-200"></span>
+        <a href="contact.html" class="btn-3d">
+          Enquire Now
+          <svg class="icon-arrow h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile actions -->
+      <div class="nav-actions flex items-center gap-3 lg:hidden">
+        <div class="call-menu is-mobile flex">
+          <button type="button" class="call-orb-solid call-menu-toggle" aria-label="Call us" aria-expanded="false"
+            aria-controls="callMenuMobile">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            </svg>
+          </button>
+          <div id="callMenuMobile" class="call-dropdown">
+            <p class="call-dropdown-title">Call Us</p>
+            <a href="tel:+919579504564" class="call-option">
+              <span class="call-option-icon"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg></span>
+              <span>
+                <span class="call-option-number">+91 9579504564</span>
+                <span class="call-option-hint">Call now</span>
+              </span>
+            </a>
+            <a href="tel:+919156284621" class="call-option">
+              <span class="call-option-icon"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg></span>
+              <span>
+                <span class="call-option-number">+91 9156284621</span>
+                <span class="call-option-hint">Call now</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <button id="mobileMenuBtn" type="button" aria-label="Toggle menu" aria-controls="mobileMenu"
+          aria-expanded="false" class="menu-btn">
+          <svg id="menuIconOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg id="menuIconClose" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="lg:hidden hidden max-h-[calc(100vh-91px)] overflow-y-auto bg-white">
+      <nav aria-label="Mobile navigation" class="container mx-auto px-4 py-4">
+        <div class="space-y-1">
+          <a href="index.html" class="mm-item" style="--i: 0">
+            Home
+            <svg class="h-4 w-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+          <a href="about.html" class="mm-item" style="--i: 1">
+            About
+            <svg class="h-4 w-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+          <a href="properties.html" class="mm-item" style="--i: 2">
+            Properties
+            <svg class="h-4 w-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+          <a href="blog.html" aria-current="page" class="mm-item is-active" style="--i: 3">
+            Blog
+            <svg class="h-4 w-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+          <a href="contact.html" class="mm-item" style="--i: 4">
+            Contact
+            <svg class="h-4 w-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+  <script>
+    // Navbar: shadow on scroll + menu icon / aria state (menu toggling itself is handled by the page script)
+    (function () {
+      var header = document.getElementById('siteHeader');
+      var menu = document.getElementById('mobileMenu');
+      var btn = document.getElementById('mobileMenuBtn');
+      var iconOpen = document.getElementById('menuIconOpen');
+      var iconClose = document.getElementById('menuIconClose');
+
+      function onScroll() {
+        header.classList.toggle('is-scrolled', window.scrollY > 10);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      new MutationObserver(function () {
+        var open = !menu.classList.contains('hidden');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        iconOpen.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', !open);
+      }).observe(menu, { attributes: true, attributeFilter: ['class'] });
+    })();
+  </script>
+
+
+
+  <!-- Blog banner -->
+  <header class="relative w-full overflow-hidden">
+    <img src="assets/img/banner/1.jpg" alt="City Property Space Blog" fetchpriority="high"
+      class="w-full h-48 sm:h-64 md:h-72 object-cover rounded-b-lg shadow-2xl" />
+    <div class="absolute inset-0 rounded-b-lg bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <h1
+        class="banner-title text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight drop-shadow-lg text-center">
+        Blog
+      </h1>
+    </div>
+  </header>
+
+  <!-- Coming soon -->
+  <section class="bg-cream py-16 md:py-24">
+    <div class="container mx-auto max-w-2xl px-4 text-center reveal-up">
+      <p class="eyebrow mb-4">Insights &amp; Updates</p>
+      <h2 class="text-3xl font-extrabold text-ink md:text-4xl">Articles coming soon</h2>
+      <p class="mt-4 text-slate-600">
+        We're preparing simple guides on buying, selling and renting property in Pune.
+        Meanwhile, our advisors are happy to answer your questions directly.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+        <a href="contact.html" class="btn-gold">
+          Contact Us
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        <a href="properties.html" class="btn-outline-gold">View Properties</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container mx-auto px-4 pt-20 pb-14">
+      <div class="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.4fr_0.8fr_1fr_1.3fr]">
+
+        <!-- Brand -->
+        <div>
+          <a href="index.html" class="inline-block" aria-label="City Property Space home">
+            <img src="./assets/img/logo/logo-light.png" alt="City Property Space" class="h-20 w-auto" loading="lazy"
+              decoding="async" />
+          </a>
+          <p class="mt-6 max-w-sm text-sm leading-relaxed">
+            Pune-based professional real estate consultants helping with residential and commercial property deals,
+            documentation, and support.
+          </p>
+          <div class="mt-7 flex items-center gap-3">
+            <a href="https://wa.me/919579504564" target="_blank" rel="noreferrer" class="footer-social"
+              aria-label="Chat on WhatsApp">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+              </svg>
+            </a>
+            <div class="call-menu">
+              <button type="button" class="footer-social call-menu-toggle" aria-label="Call us" aria-expanded="false" aria-controls="callMenuFooter">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg>
+              </button>
+              <div id="callMenuFooter" class="call-dropdown">
+                <p class="call-dropdown-title">Call Us</p>
+                <a href="tel:+919579504564" class="call-option">
+                  <span class="call-option-icon"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg></span>
+                  <span>
+                    <span class="call-option-number">+91 9579504564</span>
+                    <span class="call-option-hint">Call now</span>
+                  </span>
+                </a>
+                <a href="tel:+919156284621" class="call-option">
+                  <span class="call-option-icon"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg></span>
+                  <span>
+                    <span class="call-option-number">+91 9156284621</span>
+                    <span class="call-option-hint">Call now</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <a href="mailto:sayyadatik14@gmail.com,pradeepjaiswar800@gmail.com" class="footer-social"
+              aria-label="Email us (sayyadatik14@gmail.com and pradeepjaiswar800@gmail.com)">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h6 class="footer-title">Quick Links</h6>
+          <ul class="footer-links space-y-3 text-sm">
+            <li><a href="index.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>Home</a></li>
+            <li><a href="about.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>About Us</a></li>
+            <li><a href="properties.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>Properties</a></li>
+            <li><a href="blog.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>Blog</a></li>
+            <li><a href="contact.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Our Services -->
+        <div>
+          <h6 class="footer-title">Our Services</h6>
+          <ul class="footer-links space-y-3 text-sm">
+            <li><a href="properties.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>Residential Properties</a></li>
+            <li><a href="properties.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>Commercial Properties</a></li>
+            <li><a href="contact.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>Buy, Sell &amp; Rent</a></li>
+            <li><a href="contact.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>Site Visits</a></li>
+            <li><a href="contact.html"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>Documentation Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Get in Touch -->
+        <div>
+          <h6 class="footer-title">Get in Touch</h6>
+          <ul class="space-y-3 text-sm leading-relaxed">
+            <li><span class="footer-label">Phone:</span> <a href="tel:+919579504564">+91 9579504564</a></li>
+            <li><span class="footer-label">Email:</span> <a
+                href="mailto:sayyadatik14@gmail.com">sayyadatik14@gmail.com</a></li>
+            <li><span class="footer-label">Phone:</span> <a href="tel:+919156284621">+91 9156284621</a></li>
+            <li><span class="footer-label">Email:</span> <a
+                href="mailto:pradeepjaiswar800@gmail.com">pradeepjaiswar800@gmail.com</a></li>
+            <li><span class="footer-label">Address:</span> Office No.56, Second floor, Phuge Prima, Dighi Road, Bhosari,
+              Pune - 411039.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 text-sm sm:flex-row">
+        <p>&copy; 2025 City Property Space. All rights reserved.</p>
+        <div class="flex items-center gap-5">
+          <p>Designed &amp; Developed by <a href="https://my-profile-seven-roan.vercel.app/" target="_blank" rel="noopener" class="footer-credit">RD-WEB</a></p>
+          <a href="#" class="footer-top" data-back-to-top aria-label="Back to top">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
